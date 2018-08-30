@@ -88,10 +88,12 @@ class filing_information_common:
         part2 = p2[0]
         p3 = part2.partition('FILING VALUES')
         subject_stateinfo = (p3[0])
+        subject_stateinfo = subject_stateinfo.strip()
         alt_p = text.partition('STATE:')
         alt_part = alt_p[2]
         alt_p1 = alt_part.partition('ZIP:')
-        business_state = alt_p1[0]
+        state = alt_p1[0]
+        business_state = state.strip()
         if subject_stateinfo == "":
             return business_state
         else:
@@ -102,6 +104,7 @@ class filing_information_common:
         part = p[2]
         p2 = part.partition('IRS NUMBER:')
         industry = (p2[0])
+        industry = industry.strip()
         if industry == "":
             return "N/A"
         else:
@@ -120,7 +123,7 @@ class filing_information_common:
         part5 = p5[0]
         p6 = part5.partition('ZIP:')
         part6 = p6[0]
-        filer_stateinfo = part6.replace(" ","")
+        filer_stateinfo = part6.strip()
         if filer_stateinfo == "":
             return "N/A"
         else:
@@ -133,7 +136,7 @@ class filing_information_common:
         p2 = part1.partition('ITEM 5')
         purpose = p2[0]
         purpose = purpose.replace(";",",")
-        purpose = purpose.replace(". ","")
+        purpose = purpose.replace(".","")
         purpose = purpose.strip()
         if purpose == "":
             return "N/A"
@@ -229,3 +232,5 @@ del files13d['info'], files13d['d'], files13d['common_info']
 
 files13d.to_pickle(path_to_files2)
 files13d.to_excel(downloadfolder + "\\" + "SC13DFilings_2.xlsx")
+
+print("Finish")

@@ -112,9 +112,9 @@ filings = pd.DataFrame(columns=['accession','cik','comnam','fdate','fname','form
 # ******************************************************************************************** #
 # Loop over quarterly SEC Files                                                                #
 # ******************************************************************************************** #
-for i in range(1993,2019):
+for i in range(2018,2019):
     year1_ = i
-    for j in range(1,5):
+    for j in range(1,3):
         download(year1_,j)
         unzip(year1_,j)
         textfile(year1_,j)

@@ -2589,7 +2589,7 @@ downloadfolder = "C:\\Users\\mehl-\\Documents\\Master Thesis\\13D"
 files13d = pd.read_pickle(path_to_files2)
 
 files13d['filer1_info'] = files13d['fname'].map(lambda x: filing_information_filer1(x).information3)
-files13d['name'], files13d['share'], files13d['voting_power'] = files13d['filer1_info'].str.split(';', 2).str
+files13d['name_1'], files13d['share_1'], files13d['voting_power_1'] = files13d['filer1_info'].str.split(';', 2).str
 
 files13d_2 = files13d[files13d['name'] != '']
 
@@ -2667,3 +2667,5 @@ del files13d['filer11_info'], files13d['filer12_info'], files13d['filer13_info']
 
 files13d.to_pickle(path_to_files3)
 files13d.to_excel(downloadfolder + "\\" + "SC13DFilings_3.xlsx")
+
+print("Finish")
